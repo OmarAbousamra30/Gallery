@@ -1,23 +1,121 @@
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: rgba(128, 128, 128, 0.915);
+* {
+  padding: 0;
   margin: 0;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  text-decoration: none;
+  list-style: none;
+}
+
+body {
   font-family: Arial, sans-serif;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 60px 1fr 50px;
+  grid-template-areas:
+    "header header"
+    "aside main"
+    "aside footer";
+  min-height: 100vh;
+  transition: all 0.3s ease;
 }
 
-.card {
-  width: 300px;
+header {
+  grid-area: header;
+  background-color: #222;
+  color: white;
+  padding: 10px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid gray;
+}
+
+nav ul {
+  display: flex;
+  gap: 20px;
+}
+
+nav ul li {
+  cursor: pointer;
+  color: white;
+}
+
+aside {
+  grid-area: aside;
+  background-color: #000;
+  color: white;
   padding: 20px;
-  background-color: white;
-  border-radius: 10px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-.card:hover {
-  transform: rotate(5deg) scale(1.05);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+aside p {
+  margin: 10px 0;
+}
+
+main {
+  grid-area: main;
+  padding: 20px;
+}
+
+.image-container {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.image-container div img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 5px;
+}
+
+footer {
+  grid-area: footer;
+  background-color: #222;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+@media (max-width: 1024px) {
+  body {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 50px;
+    grid-template-areas:
+      "header"
+      "main"
+      "footer";
+  }
+
+  aside {
+    display: none;
+  }
+
+  header {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    padding-bottom: 20px;
+  }
+
+  nav ul {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .image-container {
+    grid-template-columns: 1fr;
+  }
+
+  nav ul li,
+  aside ul li {
+    font-size: 14px;
+  }
 }
