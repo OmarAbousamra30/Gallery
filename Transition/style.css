@@ -1,0 +1,23 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: rgba(128, 128, 128, 0.915);
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.card {
+  width: 300px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: rotate(5deg) scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
